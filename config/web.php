@@ -13,9 +13,11 @@ $config = [
         '@view_home_assets' => '/modules/home/assets/',
         '@view_admin_assets' => '/modules/admin/assets/',
     ],
+
     'components' => [
         'request' => [
             'cookieValidationKey' => 'for_freedom',
+            'enableCsrfValidation' => false,
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -29,9 +31,6 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
             'useFileTransport' => true,
         ],
         'log' => [
@@ -58,10 +57,11 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 ''=>'home/index/index',
+                'home'=>'home/index/index',
+                'admin'=>'admin/index/index',
             ],
         ],
     ],
-    'layoutPath'=>ROOT_PATH,
     'params' => $params,
     'modules' =>[
         'home'=>[
